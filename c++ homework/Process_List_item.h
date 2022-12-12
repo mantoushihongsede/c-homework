@@ -5,7 +5,7 @@
 
 class Process_List_item {
 public:
-	friend int Add_Node(Process_List_item *head);
+	friend int Add_Node(Process_List_item* head, Free_Blocks* free);
 	friend int Delete_Node(Process_List_item *head);
 private:
 	std::string name = "NULL";
