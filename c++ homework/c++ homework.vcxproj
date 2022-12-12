@@ -128,6 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="源.cpp" />
+    <ClCompile Include="Add_Node.cpp" />
+    <ClCompile Include="Delete_Node.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Process_List_item.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
