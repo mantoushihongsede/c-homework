@@ -6,6 +6,7 @@
 
 #include<string>
 #include<vector>
+#include"Free_Blocks.h"
 class Process_List_item {
 private:
 	std::string name = "NULL";
@@ -17,6 +18,7 @@ public:
 	friend void Clear_All(Process_List_item* head);
 	friend int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table);
 	friend Process_List_item* Delete_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table, std::string process_name);
+	friend void Update(std::vector<int>& new_page_table, std::vector<int>& page_table, Process_List_item* head);
 };
 
 #endif

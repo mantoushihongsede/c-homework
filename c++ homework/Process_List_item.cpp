@@ -101,10 +101,16 @@ Process_List_item* Delete_Node(Process_List_item* head, Free_Blocks& free, std::
  */
 void Clear_All(Process_List_item* head)
 {
-	auto now = head;
-	while (now->next != nullptr)
+	if (head == nullptr)
 	{
-		head = now->next;
-		delete now;
+		std::cout << "链表已经为空";
+		return;
 	}
+	while (head->next != nullptr)
+	{
+		auto temp = head->next;
+		delete head;
+		head = temp;
+	}
+	delete head;
 }
