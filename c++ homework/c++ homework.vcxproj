@@ -127,9 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Process_List_item.cpp" />
     <ClCompile Include="源.cpp" />
-    <ClCompile Include="Add_Node.cpp" />
-    <ClCompile Include="Delete_Node.cpp" />
+    <ClCompile Include="Free_Blocks.cpp" />
+    <ClCompile Include="Page_Table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Process_List_item.h" />
