@@ -10,12 +10,13 @@
   函数参数：指向目标链表表头的指针，对空闲块表的引用，对页表的引用
   函数返回值：返回0，表示一切正常；返回1，表示空闲内存块不够；返回2，表示程序空闲内存不够，建议终止程序
  */
-int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table)
+int Add_Node(Process_List_item* (&head), Free_Blocks& free, std::vector<int>& page_table)
 {
 	int length = 0;
 	std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 	std::cout << "How many memory blocks are required? " << std::endl;
 	std::cin >> length;
+	std::cin.get();
 	if (free.size() < length) { return 1; }	//如果空闲块不够，则退出函数
 	Process_List_item* p = new Process_List_item;
 	Process_List_item* pr = head;
@@ -57,7 +58,7 @@ int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_
   函数参数：指向目标链表表头的指针，对空闲块表的引用，对页表的引用，要删除的进程名（默认为第一个)
   函数返回值：指向链表表头的指针
  */
-Process_List_item* Delete_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table, std::string process_name = "null")
+Process_List_item* Delete_Node(Process_List_item* (& head), Free_Blocks& free, std::vector<int>& page_table, std::string process_name = "null")
 {
 	if (head == nullptr)
 	{

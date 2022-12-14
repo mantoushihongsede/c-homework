@@ -17,8 +17,8 @@ private:
 public:
 	friend int Q_E_Process(Process_List_item* head);
 	friend int Clear_All(Process_List_item* head);
-	friend int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table);
-	friend Process_List_item* Delete_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table, std::string process_name);
+	friend int Add_Node(Process_List_item* (& head), Free_Blocks& free, std::vector<int>& page_table);
+	friend Process_List_item* Delete_Node(Process_List_item* (& head), Free_Blocks& free, std::vector<int>& page_table, std::string process_name);
 	friend void Update_page(std::vector<int>& new_page_table, const std::vector<int>& page_table, Process_List_item* head);
 };
 

@@ -16,7 +16,8 @@ void Free_Blocks::inQueue(int origin, int length,std::vector<int>& page_table)
 		this->rear = (this->rear + 1) % this->length;
 		if (this->full())
 		{
-			std::cout << "Fatal Error!";
+			std::cout << "Fatal Error!" << std::endl;
+			std::cout << "Full Free table!" << std::endl;
 			exit(0);
 		}
 	}

@@ -25,20 +25,26 @@ int main(void)
 		<< "Query free blocks : Please input \"FB / fb\"" << std::endl
 		<< "Query page table : Please input \"PT / pt\"" << std::endl
 		<< "Terminate the program : Please input \"T / t\"" << std::endl;
-	while (getline(std::cin, operate)) 
+	while (std::cin >> operate) 
 	{
 		if (operate == "C" || operate == "c")
 		{
 			int flag = Add_Node(head, free_table, page_table);
-			switch (flag) {
-			case 1:
-				std::cout << "Memory blocks are not enough! ";
-				break;
-			case 2:
-				std::cout << "Fatal Error! Computer Memory is not enough! ";
+			if (flag == 0) goto next_loop;
+			if (flag == 1)
+			{
+				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+				std::cout << "Memory blocks are not enough! " << std::endl;
+				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+				goto next_loop;
+			}
+			if (flag == 2)
+			{
+				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+				std::cout << "Fatal Error! Computer Memory is not enough! " << std::endl;
+				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 				return 0;
 			}
-			goto next_loop;
 		}
 		if (operate == "D" || operate == "d")
 		{
@@ -74,7 +80,8 @@ int main(void)
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 		std::cout << "Wrong input!" << std::endl;
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
-		next_loop :
+	next_loop :
+		std::cout << "\n\n\n";
 		std::cout << "What do you what to do?" << std::endl
 			<< "Create new process : Please input \"C / c\"" << std::endl
 			<< "Delete new process : Please input \"D / d\"" << std::endl
@@ -83,5 +90,4 @@ int main(void)
 			<< "Query page table : Please input \"PT / pt\"" << std::endl
 			<< "Terminate the program : Please input \"T / t\"" << std::endl;
 	}
-	
 }

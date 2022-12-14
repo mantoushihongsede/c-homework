@@ -41,7 +41,7 @@ void Q_page_table(const std::vector<int>& page_table)
 	std::cout << "Page number\t" << "Corresponding block number" << std::endl;
 	for (auto one : page_table)
 	{
-		std::cout << count_for_page_table << "\t" << one << std::endl;
+		std::cout << "    " << count_for_page_table << "\t\t\t" << one << std::endl;
 		++count_for_page_table;
 	}
 	std::cout << "The end! " << std::endl;
