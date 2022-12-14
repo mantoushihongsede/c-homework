@@ -13,7 +13,7 @@ void Free_Blocks::inQueue(int origin, int length,std::vector<int>& page_table)
 	for (int i = 0; i < length; i++)
 	{
 		this->number[rear] = page_table[origin + i];
-		this->rear++;
+		this->rear = (this->rear + 1) % this->length;
 		if (this->full())
 		{
 			std::cout << "Fatal Error!";
@@ -33,7 +33,8 @@ int Free_Blocks::outQueue(int number, std::vector<int>& page_table)
 	int flag = page_table.size();
 	for (int i = 0; i < number; i++)
 	{
-		page_table.push_back(this->number[this->front++]);
+		page_table.push_back(this->number[this->front]);
+		this->front = (this->front + 1) % this->length;
 	}
 	return flag;
 }
