@@ -13,21 +13,19 @@
 int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table)
 {
 	int length = 0;
-	std::cout << "所需内存块数: " << std::endl;
+	std::cout << "How many memory blocks are required? " << std::endl;
 	std::cin >> length;
-	if (free.size() < length)		//如果空闲块不够，则退出函数
-	{
-		std::cout << "内存块不够: ";
-		return 1;
-	}
+	if (free.size() < length) { return 1; }	//如果空闲块不够，则退出函数
 	Process_List_item* p = new Process_List_item;
 	Process_List_item* pr = head;
 	if (p == nullptr) return 2;				//内存申请失败则退出函数
 	p->length = length;						//初始化进程对应的页表长度
-	std::cout << "进程名" << std::endl;
+	std::cout << "Process's name: " << std::endl;
 	std::cin >> p->name;					//初始化进程名
-	std::cout << "优先级" << std::endl;
-	std::cin >> p->Priority;				//初始化进程优先级
+	do{										//初始化进程优先级
+		std::cout << "Priority(from 1 to 3)" << std::endl;
+		std::cin >> p->Priority;				
+	} while (p->Priority < 1 || p->Priority > 3);
 	if (head == nullptr)					//head应在主函数中初始化为nullptr，此处检测链表是否为空
 	{
 		head = p;
@@ -97,14 +95,13 @@ Process_List_item* Delete_Node(Process_List_item* head, Free_Blocks& free, std::
 /*创建日期：22/12/13
   函数功能：从当前位置开始删除整个链表
   函数参数：指向目标链表表头的指针
-  函数返回值：无
+  函数返回值：返回1，表示链表为空；返回0，表示正常结束
  */
-void Clear_All(Process_List_item* head)
+int Clear_All(Process_List_item* head)
 {
 	if (head == nullptr)
 	{
-		std::cout << "链表已经为空";
-		return;
+		return 1;
 	}
 	while (head->next != nullptr)
 	{
@@ -113,4 +110,38 @@ void Clear_All(Process_List_item* head)
 		head = temp;
 	}
 	delete head;
+	return 0;
+}
+
+/*创建日期：22/12/14
+  函数功能：从当前位置开始展示整个链表信息
+  函数参数：指向目标链表表头的指针
+  函数返回值：返回1，表示链表为空；返回0，表示正常结束
+ */
+int Q_E_Process(Process_List_item* head)
+{
+	if (head == nullptr)
+	{
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		std::cout << "链表为空";
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		return 1;
+	}
+	do {
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		std::cout << "Current process name :" << head->name << std::endl;
+		std::cout << "Current process' name's Priority:" << head->Priority << std::endl;
+		std::cout << "Current process's home page :" << head->begin << std::endl;
+		std::cout << "Current process' name's total pages :" << head->length << std::endl;
+		if (head->next != nullptr)
+		{
+			std::cout << "Next process name :" << head->next->name << std::endl;
+		}
+		else
+		{
+			std::cout << "Final process" << std::endl;
+		}
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+	} while (head->next != nullptr);
+	return 0;
 }

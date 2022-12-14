@@ -20,6 +20,7 @@ public:
 	void inQueue(int origin, int length, std::vector<int>& page_table);		//入队函数
 	int outQueue(int number, std::vector<int>& page_table);					//出队函数
 	int size() { return length; }											//返回队列实际长度
+	void Q_Free_Blocks() const;
 };
 
 #endif

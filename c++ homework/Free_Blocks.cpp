@@ -38,3 +38,26 @@ int Free_Blocks::outQueue(int number, std::vector<int>& page_table)
 	}
 	return flag;
 }
+
+/*创建日期：22/12/14
+  函数功能：展示所有空闲物理理块号
+  函数参数：无
+  函数返回值：无
+ */
+void Free_Blocks::Q_Free_Blocks() const
+{
+	std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+	if (this->front == this->rear)
+	{
+		std::cout << "Without free blocks! " << std::endl;
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		return;
+	}
+	std::cout << "Current free blocks :" << std::endl;
+	for (int i = this->front; i != this->rear ; i = (i + 1) % this->length)
+	{
+		std::cout << this->number[i] << std::endl;
+	}
+	std::cout << "The end! " << std::endl;
+	std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+}
