@@ -5,8 +5,8 @@
 #include"Free_Blocks.h"
 #include"Memory.h"
 
-int memory_size = 16;					//模拟的内存的大小（单位是物理块的个数）
-int blocks_size = 16;					//物理块的大小（单位是char）
+const int memory_size = 16;					//模拟的内存的大小（单位是物理块的个数）
+const int blocks_size = 16;					//物理块的大小（单位是char）
 
 void Q_page_table(const std::vector<int>& page_table);      //函数声明，定义在Page_Table.cpp中
 
@@ -35,8 +35,8 @@ int main(void)
 				std::cout << "Memory blocks are not enough! ";
 				break;
 			case 2:
-				std::cerr << "Fatal Error! Computer Memory is not enough! ";
-				exit(0);
+				std::cout << "Fatal Error! Computer Memory is not enough! ";
+				return 0;
 			}
 			goto next_loop;
 		}
@@ -65,7 +65,10 @@ int main(void)
 		}
 		if (operate == "T" || operate == "t")
 		{
-			if (head != nullptr) Clear_All(head);
+			if (head != nullptr)
+			{
+				Clear_All(head);
+			}
 			break;
 		}
 		std::cout << "Wrong input!";

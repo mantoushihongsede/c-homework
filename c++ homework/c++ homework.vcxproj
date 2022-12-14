@@ -132,7 +132,6 @@
     <ClCompile Include="Free_Blocks.cpp" />
     <ClCompile Include="Page_Table.cpp" />
     <ClCompile Include="Memory.cpp" />
-    <ClCompile Include="other_func.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Process_List_item.h" />
