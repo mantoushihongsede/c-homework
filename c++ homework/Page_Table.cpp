@@ -7,7 +7,7 @@
   函数参数： 一个vector容器（新页表）, 一个vector容器（页表）, 指向目标链表表头的指针
   函数返回值：无
  */
-void Update(std::vector<int>& new_page_table, std::vector<int>& page_table, Process_List_item* head)
+void Update_page(std::vector<int>& new_page_table, std::vector<int>& page_table, Process_List_item* head)
 {
 	while (head != nullptr)
 	{

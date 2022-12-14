@@ -12,7 +12,7 @@ private:
 public:
 	Free_Blocks(int N)														// 构造函数
 	{ 
-		for (rear = 0; rear < N; rear++) number[rear] = rear;
+		for (rear = 0; rear < N; rear++) number[rear] = 15 - rear;
 		length = N + 1;
 	} 
 	int full() const { return ((this->rear + 1) % this->length == this->front) ? 1 : 0; }		//检测是否为满的成员函数
