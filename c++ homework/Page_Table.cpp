@@ -36,6 +36,7 @@ void Q_page_table(const std::vector<int>& page_table)
 	{
 		std::cout << "Blank page table" << std::endl;
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		return;
 	}
 	std::cout << "Page number\t" << "Corresponding block number" << std::endl;
 	for (auto one : page_table)

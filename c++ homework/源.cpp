@@ -71,9 +71,12 @@ int main(void)
 			}
 			break;
 		}
-		std::cout << "Wrong input!";
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		std::cout << "Wrong input!" << std::endl;
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 		next_loop :
-		std::cout<< "Create new process : Please input \"C / c\"" << std::endl
+		std::cout << "What do you what to do?" << std::endl
+			<< "Create new process : Please input \"C / c\"" << std::endl
 			<< "Delete new process : Please input \"D / d\"" << std::endl
 			<< "Query existing processes : Please input \"P / p\"" << std::endl
 			<< "Query free blocks : Please input \"FB / fb\"" << std::endl

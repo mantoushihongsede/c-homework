@@ -13,6 +13,7 @@
 int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table)
 {
 	int length = 0;
+	std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 	std::cout << "How many memory blocks are required? " << std::endl;
 	std::cin >> length;
 	if (free.size() < length) { return 1; }	//如果空闲块不够，则退出函数
@@ -24,7 +25,8 @@ int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_
 	std::cin >> p->name;					//初始化进程名
 	do{										//初始化进程优先级
 		std::cout << "Priority(from 1 to 3)" << std::endl;
-		std::cin >> p->Priority;				
+		std::cin >> p->Priority;
+		std::cin.get();
 	} while (p->Priority < 1 || p->Priority > 3);
 	if (head == nullptr)					//head应在主函数中初始化为nullptr，此处检测链表是否为空
 	{
@@ -44,6 +46,8 @@ int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_
 		pr->next = p;
 	}
 	p->begin = free.outQueue(length, page_table);
+	std::cout << "Successfully generated" << std::endl;
+	std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 	return 0;
 }
 
@@ -55,6 +59,13 @@ int Add_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_
  */
 Process_List_item* Delete_Node(Process_List_item* head, Free_Blocks& free, std::vector<int>& page_table, std::string process_name = "null")
 {
+	if (head == nullptr)
+	{
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		std::cout << "NO process now" << std::endl;
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		return head;
+	}
 	auto check = head;
 	auto front = head;
 	if (process_name == "null" || process_name == head->name) //默认情况下和目标进程为第一个进程时，均删除第一个进程表项
@@ -123,7 +134,7 @@ int Q_E_Process(Process_List_item* head)
 	if (head == nullptr)
 	{
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
-		std::cout << "链表为空";
+		std::cout << "链表为空" << std::endl;
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 		return 1;
 	}
