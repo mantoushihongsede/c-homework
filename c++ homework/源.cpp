@@ -24,6 +24,7 @@ int main(void)
 		<< "Query existing processes : Please input \"P / p\"" << std::endl
 		<< "Query free blocks : Please input \"FB / fb\"" << std::endl
 		<< "Query page table : Please input \"PT / pt\"" << std::endl
+		<< "Read/write memory information : Please input \"RW / rw\"" << std::endl
 		<< "Terminate the program : Please input \"T / t\"" << std::endl;
 	while (std::cin >> operate) 
 	{
@@ -69,6 +70,11 @@ int main(void)
 			Q_page_table(page_table);
 			goto next_loop;
 		}
+		if (operate == "RW" || operate == "rw")
+		{
+			
+			goto next_loop;
+		}
 		if (operate == "T" || operate == "t")
 		{
 			if (head != nullptr)
@@ -88,6 +94,9 @@ int main(void)
 			<< "Query existing processes : Please input \"P / p\"" << std::endl
 			<< "Query free blocks : Please input \"FB / fb\"" << std::endl
 			<< "Query page table : Please input \"PT / pt\"" << std::endl
+			<< "Read/write memory information : Please input \"RW / RW\"" << std::endl
 			<< "Terminate the program : Please input \"T / t\"" << std::endl;
 	}
 }
+
+

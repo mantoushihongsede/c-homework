@@ -157,3 +157,31 @@ int Q_E_Process(Process_List_item* head)
 	} while (head->next != nullptr);
 	return 0;
 }
+
+
+int Check(Process_List_item* (&head), std::string name, int information[2])
+{
+	if (head == nullptr)
+	{
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		std::cout << "Empty process list!" << std::endl;
+		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+	}
+	else
+	{
+		while (head->name != name)
+		{
+			if (head->next == nullptr)
+			{
+				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+				std::cout << "Process not found" << std::endl;
+				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+				return 0;
+			}
+			head = head->next;
+		}
+		information[0] = head->begin;
+		information[1] = head->length;
+		return 1;
+	}
+}
