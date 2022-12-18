@@ -79,7 +79,7 @@ int main(void)
 			std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 			std::cout << "In which process do you want to implement?" << std::endl;
 			std::cin >> ch;
-			int information[2] = { 0 };
+			int information[2] = { 0 };			//模拟页表寄存器
 			int flag = 1;						//返回值为1时，重复执行Check
 			while (flag == 1)	flag = Check(head, ch, information);
 			if (flag == 2)
