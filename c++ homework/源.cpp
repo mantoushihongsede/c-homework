@@ -80,14 +80,14 @@ int main(void)
 			std::cout << "In which process do you want to implement?" << std::endl;
 			std::cin >> ch;
 			int information[2] = { 0 };
-			int flag = 1;
+			int flag = 1;						//返回值为1时，重复执行Check
 			while (flag == 1)	flag = Check(head, ch, information);
 			if (flag == 2)
 			{
 				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 				goto next_loop;
 			}
-			flag = 1;
+			flag = 1;							//返回值为1时，重复执行Address_Translation
 			while(flag == 1) flag = Address_Translation(information, page_table);
 			std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 			goto next_loop;
