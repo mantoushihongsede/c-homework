@@ -158,7 +158,11 @@ int Q_E_Process(Process_List_item* head)
 	return 0;
 }
 
-
+/*创建日期：22/12/17
+  函数功能：检查链表中是否有指定名字的进程
+  函数参数：指向目标链表表头的指针，一个进程名（string), 一个信息数组（用与存储页数和页内地址）
+  函数返回值：返回2，进程表为空；返回1，表示没找到；返回0，表示正常结束
+ */
 int Check(Process_List_item* (&head), std::string name, int information[2])
 {
 	if (head == nullptr)
@@ -166,6 +170,7 @@ int Check(Process_List_item* (&head), std::string name, int information[2])
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 		std::cout << "Empty process list!" << std::endl;
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+		return 2;
 	}
 	else
 	{
@@ -176,12 +181,12 @@ int Check(Process_List_item* (&head), std::string name, int information[2])
 				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 				std::cout << "Process not found" << std::endl;
 				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
-				return 0;
+				return 1;
 			}
 			head = head->next;
 		}
 		information[0] = head->begin;
 		information[1] = head->length;
-		return 1;
+		return 0;
 	}
 }

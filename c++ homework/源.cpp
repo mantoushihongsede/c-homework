@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<sstream>
 #include"Process_List_item.h"
 #include"Free_Blocks.h"
 #include"Memory.h"
@@ -9,6 +10,7 @@ const int memory_size = 16;					//模拟的内存的大小（单位是物理块的个数）
 const int blocks_size = 16;					//物理块的大小（单位是char）
 
 void Q_page_table(const std::vector<int>& page_table);      //函数声明，定义在Page_Table.cpp中
+int Address_Translation(const int(&information)[2], std::vector<int>& page_table);
 
 int main(void)
 {
@@ -24,7 +26,7 @@ int main(void)
 		<< "Query existing processes : Please input \"P / p\"" << std::endl
 		<< "Query free blocks : Please input \"FB / fb\"" << std::endl
 		<< "Query page table : Please input \"PT / pt\"" << std::endl
-		<< "Read/write memory information : Please input \"RW / rw\"" << std::endl
+		<< "Convert logical address to physical address : Please input \"CT/ ct\"" << std::endl
 		<< "Terminate the program : Please input \"T / t\"" << std::endl;
 	while (std::cin >> operate) 
 	{
@@ -70,9 +72,23 @@ int main(void)
 			Q_page_table(page_table);
 			goto next_loop;
 		}
-		if (operate == "RW" || operate == "rw")
+		if (operate == "CT" || operate == "ct")
 		{
-			
+			std::string ch;
+			std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+			std::cout << "In which process do you want to implement?" << std::endl;
+			std::cin >> ch;
+			int information[2] = { 0 };
+			int flag = 1;
+			while (flag == 1)	flag = Check(head, ch, information);
+			if (flag == 2)
+			{
+				std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
+				goto next_loop;
+			}
+			flag = 1;
+			while(flag == 1) flag = Address_Translation(information, page_table);
+			std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 			goto next_loop;
 		}
 		if (operate == "T" || operate == "t")
@@ -94,9 +110,8 @@ int main(void)
 			<< "Query existing processes : Please input \"P / p\"" << std::endl
 			<< "Query free blocks : Please input \"FB / fb\"" << std::endl
 			<< "Query page table : Please input \"PT / pt\"" << std::endl
-			<< "Read/write memory information : Please input \"RW / RW\"" << std::endl
+			<< "Convert logical address to physical address : Please input \"CT/ ct\"" << std::endl
 			<< "Terminate the program : Please input \"T / t\"" << std::endl;
 	}
 }
-
 
