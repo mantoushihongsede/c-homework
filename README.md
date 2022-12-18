@@ -11,7 +11,7 @@
 
 数据结构：
 
-1、一个大小为16的string数组，每个string对象均初始化为16位空格。
+1、一个大小为16的vector<string>，每个string对象均初始化为16位空格。
 
 2、页表：一个vector<int>容器
 
