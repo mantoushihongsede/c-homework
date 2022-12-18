@@ -39,7 +39,11 @@ void i_to_b(std::string& b,const int& address_i)
 	return;
 }
 
-
+/*创建日期：22/12/18
+  函数功能：由逻辑地址（十进制）找到物理地址（十进制）
+  函数参数：逻辑地址（十进制），信息数组，页表
+  函数返回值：返回0，表示正常结束；返回1，表示出现问题
+ */
 int check_page_table(int& address_i,const int (&information)[2], const std::vector<int>& page_table)
 {
 	if (address_i > information[0] + information[1] || address_i < information[0]) 
