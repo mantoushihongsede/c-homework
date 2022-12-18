@@ -52,6 +52,7 @@ int main(void)
 		if (operate == "D" || operate == "d")
 		{
 			std::string process_name;
+			std::cin.get();
 			std::cout << "Process name: ";
 			getline(std::cin, process_name);
 			head = Delete_Node(head, free_table, page_table, process_name);

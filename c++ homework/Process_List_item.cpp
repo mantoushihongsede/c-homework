@@ -14,10 +14,10 @@ int Add_Node(Process_List_item* (&head), Free_Blocks& free, std::vector<int>& pa
 {
 	int length = 0;
 	std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
-	std::cout << "How many memory blocks are required? " << std::endl;
+	std::cout << "How many memory blocks are required?(1~16) " << std::endl;
 	std::cin >> length;
 	std::cin.get();
-	if (free.size() < length) { return 1; }	//如果空闲块不够，则退出函数
+	if (free.size() < length || length < 0) { return 1; }	//如果空闲块不够，则退出函数
 	Process_List_item* p = new Process_List_item;
 	Process_List_item* pr = head;
 	if (p == nullptr) return 2;				//内存申请失败则退出函数
@@ -132,15 +132,14 @@ int Clear_All(Process_List_item* head)
  */
 int Q_E_Process(Process_List_item* head)
 {
+	std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 	if (head == nullptr)
 	{
-		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 		std::cout << "链表为空" << std::endl;
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 		return 1;
 	}
 	do {
-		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
 		std::cout << "Current process name :" << head->name << std::endl;
 		std::cout << "Current process' name's Priority:" << head->Priority << std::endl;
 		std::cout << "Current process's home page :" << head->begin << std::endl;
@@ -153,8 +152,9 @@ int Q_E_Process(Process_List_item* head)
 		{
 			std::cout << "Final process" << std::endl;
 		}
+		head = head->next;
 		std::cout << "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" << std::endl;
-	} while (head->next != nullptr);
+	} while (head != nullptr);
 	return 0;
 }
 

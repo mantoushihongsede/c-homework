@@ -6,7 +6,7 @@
 /*创建日期：22/12/13
   函数功能：从指定页码开始，将指定长度的页对应的物理块依次加入空闲块表
   函数参数：一个整型，标志页表始址；一个整型，标志页表成都；一个对vector<int>类型的引用，标志页表
-  函数返回值：返回页表始址
+  函数返回值：
  */
 void Free_Blocks::inQueue(int origin, int length,std::vector<int>& page_table)
 {
@@ -14,12 +14,6 @@ void Free_Blocks::inQueue(int origin, int length,std::vector<int>& page_table)
 	{
 		this->number[rear] = page_table[origin + i];
 		this->rear = (this->rear + 1) % this->length;
-		if (this->full())
-		{
-			std::cout << "Fatal Error!" << std::endl;
-			std::cout << "Full Free table!" << std::endl;
-			exit(0);
-		}
 	}
 }
 

@@ -15,7 +15,7 @@ public:
 		for (rear = 0; rear < N; rear++) number[rear] = 15 - rear;
 		length = N + 1;
 	} 
-	int full() const { return ((this->rear + 1) % this->length == this->front) ? 1 : 0; }		//检测是否为满的成员函数
+	int full() const { return (((this->rear + 1) % this->length) == this->front) ? 1 : 0; }		//检测是否为满的成员函数
 	int empty() const { return (this->rear == this->front ) ? 1 : 0; }		//检测是否为空的成员函数
 	void inQueue(int origin, int length, std::vector<int>& page_table);		//入队函数
 	int outQueue(int number, std::vector<int>& page_table);					//出队函数
